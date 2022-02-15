@@ -15,8 +15,8 @@ program simple_example
   ierror = paths%append(".")
   ierror = import_py(mymodule, "simple_example")
 
-  call simple_print(mymodule)
-  !call simple_plot(mymodule)
+  !call simple_print(mymodule)
+  call simple_plot(mymodule)
 
   call mymodule%destroy
   call paths%destroy
@@ -46,17 +46,15 @@ program simple_example
     errcheck
     ierror = ndarray_create_nocopy(y_arr, y)
     errcheck
-    ierror = tuple_create(args, 2)
+    ierror = tuple_create(args, 1)
     errcheck
-    ierror = args%setitem(0, x_arr)
-    errcheck
-    ierror = args%setitem(1, y_arr)
+    ierror = args%setitem(0, y_arr)
     errcheck
 
     ierror = call_py(return_value, mymodule, "py_plot1Darray", args)
     ierror = cast(return_string, return_value)
     write(*,*) return_string
-    call return_value%destroy
+    call args%destroy
   end subroutine simple_plot
 
   subroutine simple_print(mymodule)

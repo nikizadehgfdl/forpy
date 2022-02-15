@@ -1,17 +1,17 @@
 #!/bin/env python
 #Inspired from https://github.com/wangsl/python-embedding
-#import sys
-#import numpy
-#import matplotlib.pyplot as plt
+import sys
+import numpy
+import matplotlib.pyplot as plt
 #import torch
 #A test function with one argument
-def py_plot1Darray(x) :
-    return
-    print("py_plot1Darray: Shape of the input array x : ", x.shape)
-    a=numpy.sum(x[:])
+def py_plot1Darray(*x) :
+    #print("py_plot1Darray",x[0].shape)
+    print("py_plot1Darray: Shape of the input array x : ", x[0].shape)
+    a=numpy.sum(x[0][:])
     print("py_plot1Darray: sum(x[:]) ", a)
     sys.stdout.flush()
-    plt.plot(x[:-1],marker='o');plt.show();
+    plt.plot(x[0][:-1],marker='o');plt.show();
     return a
 
 def py_plot1Darrays(x1,x2) :
@@ -69,6 +69,8 @@ def my_test_torch(x, y) :
     sys.stdout.flush()
     
 def print_args(*args, **kwargs):
+    print("Arguments: ", args)
+    print("Keyword arguments: ", kwargs)
     return "Returned from mymodule.print_args"
 
 if __name__ == '__main__' :
