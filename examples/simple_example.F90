@@ -46,14 +46,21 @@ program simple_example
     errcheck
     ierror = ndarray_create_nocopy(y_arr, y)
     errcheck
-    ierror = tuple_create(args, 1)
+    ierror = tuple_create(args, 2)
     errcheck
     ierror = args%setitem(0, y_arr)
+    errcheck
+    ierror = args%setitem(1, x_arr)
     errcheck
 
     ierror = call_py(return_value, mymodule, "py_plot1Darray", args)
     ierror = cast(return_string, return_value)
     write(*,*) return_string
+
+    ierror = call_py(return_value, mymodule, "py_plot2Darray", args)
+    ierror = cast(return_string, return_value)
+    write(*,*) return_string
+
     call args%destroy
   end subroutine simple_plot
 

@@ -6,12 +6,19 @@ import matplotlib.pyplot as plt
 #import torch
 #A test function with one argument
 def py_plot1Darray(*x) :
-    #print("py_plot1Darray",x[0].shape)
     print("py_plot1Darray: Shape of the input array x : ", x[0].shape)
     a=numpy.sum(x[0][:])
     print("py_plot1Darray: sum(x[:]) ", a)
     sys.stdout.flush()
     plt.plot(x[0][:-1],marker='o');plt.show();
+    return a
+
+def py_plot2Darray(*x) :
+    print("py_plot2Darray: Shape of the input array x : ", x[0].shape, x[1].shape)
+    a=numpy.sum(x[0][:])
+    print("py_plot2Darray: sum(x[:]) ", a)
+    sys.stdout.flush()
+    plt.plot(x[1][:-1],x[0][:-1],marker='o');plt.show();
     return a
 
 def py_plot1Darrays(x1,x2) :
