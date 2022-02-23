@@ -1,0 +1,3 @@
+#To run this example on workstation
+source ./intel.env 
+make run
